@@ -4,7 +4,10 @@ require 'open-uri'
 require 'csv'
 require 'json'
 
-URL_FILE = "nfl_ytviewsJSON.txt"
+nowish = Time.now
+when_scraped = "#{nowish.month}-#{nowish.day}"
+
+URL_FILE = "nfl_ytviews-#{when_scraped}.txt"
 ytvids = []
 
 url = 'https://www.youtube.com/channel/UCDVYQ4Zhbm3S2dlz7P1GBDg/videos'

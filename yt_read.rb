@@ -10,7 +10,7 @@ stat = JSON.parse(file)
 
 i = 0
 
-while (i < stat.length)
+while i < stat.length
   if stat[i]["views"] == "1,945,923 views"
     puts stat[i]["title"]
     i += 1

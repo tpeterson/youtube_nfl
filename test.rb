@@ -4,7 +4,8 @@ require 'open-uri'
 require 'csv'
 require 'json'
 
-URL_FILE = "nfl_ytviewsJSON.txt"
+
+URL_FILE = "nfl_ytviews.txt"
 ytvids = []
 
 url = 'https://www.youtube.com/channel/UCDVYQ4Zhbm3S2dlz7P1GBDg/videos'
@@ -32,11 +33,25 @@ page.css('ul#browse-items-primary li .yt-lockup-content').each do |video|
   )
 end
 
-File.open(URL_FILE, 'w') do |f|
-  f.puts JSON.pretty_generate(ytvids)
+ytvids.each do |video|
+  file = File.open(URL_FILE, "r") { |file| file.read }
+  stats = JSON.parse(file)
+  check_views(stats)
+
+  def check_views(stats)
+    puts JSON.pretty_generate(stats)
+    
+  end
+
+  File.read(URL_FILE) do |x|
+    x = ytvids
+    if (x.views == ) do
+
+    end
+  end
 end
 
-puts "Copied #{ytvids.length} titles"
-puts ytvids[0][:title]
-puts ytvids[0][:link]
-puts ytvids[0][:views]
+
+File.open(URL_FILE, 'w') do |f|
+  f.puts ytvids
+end

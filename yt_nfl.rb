@@ -7,7 +7,7 @@ require 'json'
 nowish = Time.now
 when_scraped = "#{nowish.month}-#{nowish.day}"
 
-URL_FILE = "nfl_ytviews-#{when_scraped}.txt"
+views_file = "nfl_ytviews-#{when_scraped}.txt"
 ytvids = []
 
 url = 'https://www.youtube.com/channel/UCDVYQ4Zhbm3S2dlz7P1GBDg/videos'
@@ -35,7 +35,7 @@ page.css('ul#browse-items-primary li .yt-lockup-content').each do |video|
   )
 end
 
-File.open(URL_FILE, 'w') do |f|
+File.open(views_file, 'w') do |f|
   f.puts JSON.pretty_generate(ytvids)
 end
 
